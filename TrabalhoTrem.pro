@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     trem.cpp \
-    servidor.cpp
+    servidor.cpp \
+    semaforo.cpp
 
 HEADERS  += mainwindow.h \
     trem.h \
-    servidor.h
+    servidor.h \
+    semaforo.h
 
 FORMS    += mainwindow.ui
 

@@ -1,5 +1,5 @@
 #include "servidor.h"
-#include "trem.h"
+#include "tremaux.h"
 #include "mainwindow.h"
 
 #include <cstdio>       //printf
@@ -16,54 +16,79 @@ using namespace std;
 #define MAXNAME 100
 #define PORTNUM 4325
 
-Servidor::Servidor()
+Servidor::Servidor(int id)
 {
-
+    socketId=id;
+    velocidade=120;
+    trem=new Trem(4,0,0);
 }
 
-int Servidor::aqui(int socketId){
-    struct sockaddr_in enderecoCliente;
-    socklen_t tamanhoEnderecoCliente = sizeof(struct sockaddr);
-    int byteslidos;
+Servidor::~Servidor()
+{
+    threadServ.join();
+}
 
-    int velocidade=0;
-    int conexaoClienteId;
-    cout<<"Servidor: esperando conexões clientes\n";
+void Servidor::start(){
+    threadServ = std::thread(&Servidor::run,this );
+}
 
-    //Servidor fica bloqueado esperando uma conexão do cliente
-    conexaoClienteId = accept( socketId,(struct sockaddr *) &enderecoCliente,&tamanhoEnderecoCliente );
+void Servidor::run(){
+    //variáveis do servidor
 
-    cout<<"Servidor: recebeu conexão de %s\n", inet_ntoa(enderecoCliente.sin_addr);
+       //variáveis relacionadas com as conexões clientes
+       struct sockaddr_in enderecoCliente;
+       socklen_t tamanhoEnderecoCliente = sizeof(struct sockaddr);
+       int conexaoClienteId;
 
-    //Verificando erros
-    if ( conexaoClienteId == -1)
-    {
-        cout<<"Falha ao executar accept()";
-        exit(EXIT_FAILURE);
-    }
+       int byteslidos;
 
-    //receber uma msg do cliente
-    cout<<"Servidor vai ficar esperando uma mensagem\n";
-    byteslidos = recv(conexaoClienteId, &velocidade, sizeof(velocidade),0);
+       //servidor ficar em um loop infinito
+       while(1)
+       {
 
-    if (byteslidos == -1)
-    {
-        cout<<"Falha ao executar recv()";
-        exit(EXIT_FAILURE);
-    }
-    else if (byteslidos == 0)
-    {
-        cout<<"Cliente finalizou a conexão\n";
-        exit(EXIT_SUCCESS);
-    }
+           printf("Servidor: esperando conexões clientes\n");
 
-    Servidor::fechar(conexaoClienteId);
+           //Servidor fica bloqueado esperando uma conexão do cliente
+           conexaoClienteId = accept( socketId,(struct sockaddr *) &enderecoCliente,&tamanhoEnderecoCliente );
 
+           printf("Servidor: recebeu conexão de %s\n", inet_ntoa(enderecoCliente.sin_addr));
+
+           //Verificando erros
+           if ( conexaoClienteId == -1)
+           {
+               printf("Falha ao executar accept()");
+               exit(EXIT_FAILURE);
+           }
+
+           //receber uma msg do cliente
+           printf("Servidor vai ficar esperando uma mensagem\n");
+           byteslidos = recv(conexaoClienteId,&velocidade,sizeof(velocidade),0);
+
+           if (byteslidos == -1)
+           {
+               printf("Falha ao executar recv()");
+               exit(EXIT_FAILURE);
+           }
+           else if (byteslidos == 0)
+           {
+               printf("Cliente finalizou a conexão\n");
+               exit(EXIT_SUCCESS);
+           }
+
+           cout<<"Servidor recebeu a seguinte msg do cliente:  "<<trem->getTempoParado()<<"\n";
+
+
+           close(conexaoClienteId);
+       }
+}
+
+int Servidor::getVelocidade(){
     return velocidade;
-
 }
 
-void Servidor::fechar(int conexaoClienteId)
-{
-    close(conexaoClienteId);
+int Servidor::getId(){
+    return trem->getId();
+}
+void Servidor::setVelocidade(int vel){
+    velocidade=vel;
 }

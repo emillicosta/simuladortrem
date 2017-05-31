@@ -4,6 +4,7 @@
 #include "trem.h"
 #include "servidor.h"
 #include <QMainWindow>
+#include <thread>
 
 using namespace std;
 
@@ -18,6 +19,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void run();
 
 public slots:
     void updateInterface(int,int,int);
@@ -32,6 +34,7 @@ private:
     Trem *trem6;
     Trem *trem7;
     Servidor *s;
+    std::thread threadVel;
 };
 
 #endif // MAINWINDOW_H

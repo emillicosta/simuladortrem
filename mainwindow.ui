@@ -139,7 +139,7 @@
      <string notr="true">background-color: red</string>
     </property>
     <property name="text">
-     <string/>
+     <string>T2</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelTrem01">
@@ -155,7 +155,7 @@
      <string notr="true">background-color: red</string>
     </property>
     <property name="text">
-     <string/>
+     <string>T1</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelTrem05">
@@ -171,7 +171,7 @@
      <string notr="true">background-color: red</string>
     </property>
     <property name="text">
-     <string/>
+     <string>T5</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelTrem03">
@@ -187,7 +187,7 @@
      <string notr="true">background-color: red</string>
     </property>
     <property name="text">
-     <string/>
+     <string>T3</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelTrem04">
@@ -203,7 +203,7 @@
      <string notr="true">background-color: red</string>
     </property>
     <property name="text">
-     <string/>
+     <string>T4</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelTrem06">
@@ -219,7 +219,7 @@
      <string notr="true">background-color: red</string>
     </property>
     <property name="text">
-     <string/>
+     <string>T6</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelTrem07">
@@ -235,7 +235,7 @@
      <string notr="true">background-color: red</string>
     </property>
     <property name="text">
-     <string/>
+     <string>T7</string>
     </property>
    </widget>
   </widget>

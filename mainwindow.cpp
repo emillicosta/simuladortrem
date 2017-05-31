@@ -49,60 +49,77 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(trem7,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
     trem7->start();
 
-    //variáveis do servidor
+
     struct sockaddr_in endereco;
     int socketId;
-
-
-    /*
-     * Configurações do endereço
-    */
     memset(&endereco, 0, sizeof(endereco));
     endereco.sin_family = AF_INET;
     endereco.sin_port = htons(PORTNUM);
-    //endereco.sin_addr.s_addr = INADDR_ANY;
     endereco.sin_addr.s_addr = inet_addr("127.0.0.1");
-
 
     socketId = socket(AF_INET, SOCK_STREAM, 0);
 
-    //Verificar erros
     if (socketId == -1)
     {
-        cout<<"Falha ao executar socket()\n";
+        printf("Falha ao executar socket()\n");
         exit(EXIT_FAILURE);
     }
 
-   //Conectando o socket a uma porta. Executado apenas no lado servidor
-
+    //Conectando o socket a uma porta. Executado apenas no lado servidor
     if ( bind (socketId, (struct sockaddr *)&endereco, sizeof(struct sockaddr)) == -1 )
     {
-        cout<<"Falha ao executar bind()\n";
+        printf("Falha ao executar bind()\n");
         exit(EXIT_FAILURE);
     }
 
     //Habilitando o servidor a receber conexoes do cliente
     if ( listen( socketId, 10 ) == -1)
     {
-        cout<<"Falha ao executar listen()\n";
+        printf("Falha ao executar listen()\n");
         exit(EXIT_FAILURE);
     }
 
-    //servidor ficar em um loop infinito
-    /*int velocidade=0;
-    while(1)
-    {
-
-       // s = new Servidor();
-
-     // velocidade=velocidade+23;//s->aqui(socketId);
-        //trem1->setVelocidade(velocidade);
-    }*/
+    s = new Servidor(socketId);
+    s->start();
+    threadVel=std::thread(&MainWindow::run,this);
+    threadVel.detach();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::run()
+{
+    int id;
+    while (true) {
+        id=s->getId();
+        switch(id){
+            case 1:
+                trem1->setTempoParado(s->getVelocidade());
+                break;
+            case 2:
+                trem2->setTempoParado(s->getVelocidade());
+                break;
+            case 3:
+                trem3->setTempoParado(s->getVelocidade());
+                break;
+            case 4:
+                trem4->setTempoParado(s->getVelocidade());
+                break;
+            case 5:
+                trem5->setTempoParado(s->getVelocidade());
+                break;
+            case 6:
+                trem6->setTempoParado(s->getVelocidade());
+                break;
+            case 7:
+                trem7->setTempoParado(s->getVelocidade());
+            default:
+                break;
+        }
+    }
 }
 
 void MainWindow::updateInterface(int id, int x, int y)

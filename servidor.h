@@ -2,15 +2,24 @@
 #define SERVIDOR_H
 
 #include "trem.h"
+#include <thread>
 class Servidor
 {
 public:
-    Servidor();
-    void fechar(int);
-    int aqui(int);
+    Servidor(int);
+    ~Servidor();
+    void start();
+    void run();
+    int getVelocidade();
+    int getId();
+    void setVelocidade(int);
 
 private:
+    std::thread threadServ;
+    int velocidade;
+    int socketId;
     Trem *trem;
+
 };
 
 #endif // SERVIDOR_H
