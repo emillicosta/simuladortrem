@@ -1,0 +1,37 @@
+ switch(valorEscolhido){
+            case 1:
+
+                if(conectado==false){
+
+                    if(connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) ==-1){
+                        std::cout << "Erro em conectar socket" << std::endl;
+                        exit(EXIT_SUCCESS);
+                    }
+
+                                        conectado=true;
+                }else{
+                    conectado=false;
+                    sair=true;
+                }    
+
+            break;
+            case 2:
+                if(trensParados==true){
+                    buffer << "T: 1 2 3 4 5 6 7\nVL: 40 40 40 40 40 40 40";
+                    trensParados=false;
+                }else{
+                     buffer << "T: 1 2 3 4 5 6 7\nVL: 0 0 0 0 0 0 0";
+                     trensParados =true;
+                }
+            break;
+            case 3:
+                buffer << "T: " << telaTrens(j1,"Parar") << "\nVL: 0";
+            break;
+            case 4:
+
+                int trem = telaTrens(j1,"Mudar velocidade");
+
+                buffer << "T: " << trem << "\nVL: " << velocidadeTrens(j1,trem);
+            break;    
+        }
+

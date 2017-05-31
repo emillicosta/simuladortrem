@@ -104,7 +104,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #ABCCE8</string>
+     <string notr="true">background-color: #ABCCE8;
+</string>
     </property>
     <property name="text">
      <string/>
@@ -136,10 +137,11 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: red</string>
+     <string notr="true">background-color: yellow;
+text-align: center;</string>
     </property>
     <property name="text">
-     <string>T2</string>
+     <string> T2</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelTrem01">
@@ -152,10 +154,10 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: red</string>
+     <string notr="true">background-color: orange</string>
     </property>
     <property name="text">
-     <string>T1</string>
+     <string> T1</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelTrem05">
@@ -168,10 +170,10 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: red</string>
+     <string notr="true">background-color: orange</string>
     </property>
     <property name="text">
-     <string>T5</string>
+     <string> T5</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelTrem03">
@@ -184,10 +186,10 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: red</string>
+     <string notr="true">background-color: yellow</string>
     </property>
     <property name="text">
-     <string>T3</string>
+     <string> T3</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelTrem04">
@@ -203,7 +205,7 @@
      <string notr="true">background-color: red</string>
     </property>
     <property name="text">
-     <string>T4</string>
+     <string> T4</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelTrem06">
@@ -216,10 +218,10 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: red</string>
+     <string notr="true">background-color: orange</string>
     </property>
     <property name="text">
-     <string>T6</string>
+     <string> T6</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelTrem07">
@@ -232,10 +234,23 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: red</string>
+     <string notr="true">background-color: yellow</string>
     </property>
     <property name="text">
-     <string>T7</string>
+     <string> T7</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>70</y>
+      <width>59</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>
@@ -245,7 +260,7 @@
      <x>0</x>
      <y>0</y>
      <width>728</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
