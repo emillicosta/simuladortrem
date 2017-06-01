@@ -16,11 +16,11 @@ using namespace std;
 #define MAXNAME 100
 #define PORTNUM 4325
 
-Servidor::Servidor(int id)
+Servidor::Servidor(int idsocket)
 {
-    socketId=id;
+    socketId=idsocket;
     velocidade=120;
-    trem=new Trem(4,0,0);
+    id=1;
 }
 
 Servidor::~Servidor()
@@ -62,7 +62,7 @@ void Servidor::run(){
 
            //receber uma msg do cliente
            printf("Servidor vai ficar esperando uma mensagem\n");
-           byteslidos = recv(conexaoClienteId,&velocidade,sizeof(velocidade),0);
+           byteslidos = recv(conexaoClienteId,&dados,sizeof(dados),0);
 
            if (byteslidos == -1)
            {
@@ -75,7 +75,7 @@ void Servidor::run(){
                exit(EXIT_SUCCESS);
            }
 
-           cout<<"Servidor recebeu a seguinte msg do cliente:  "<<trem->getTempoParado()<<"\n";
+           cout<<"Servidor recebeu a seguinte msg do cliente:  "<<dados.str()<<"\n";
 
 
            close(conexaoClienteId);
@@ -87,7 +87,7 @@ int Servidor::getVelocidade(){
 }
 
 int Servidor::getId(){
-    return trem->getId();
+    return id;
 }
 void Servidor::setVelocidade(int vel){
     velocidade=vel;

@@ -1,8 +1,11 @@
 #ifndef SERVIDOR_H
 #define SERVIDOR_H
 
-#include "trem.h"
 #include <thread>
+#include <string>
+#include <sstream>
+
+
 class Servidor
 {
 public:
@@ -18,7 +21,8 @@ private:
     std::thread threadServ;
     int velocidade;
     int socketId;
-    Trem *trem;
+    int id;
+    std::stringstream dados;
 
 };
 
