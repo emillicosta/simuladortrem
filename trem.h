@@ -32,6 +32,9 @@ private:
    int y;
    int tempo_parado;
    bool enable;
+   int media=0;
+   int qtdvoltas=-1;
+   int tempo=0;
 
    Semaforo *semaforo0;
          Semaforo *semaforo1;
