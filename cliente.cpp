@@ -208,7 +208,7 @@ int main(int argc, char *argv[])
     bool trensParados=false;
     std::stringstream buffer;
         
-        int valorEscolhido=1;
+    int valorEscolhido=1;
 
     while(!sair){
          
@@ -234,10 +234,10 @@ int main(int argc, char *argv[])
         //==========================================================
         
                 if(conectado==true){
-                if(connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) ==-1){
-                    std::cout << "Erro em conectar socket 111" << std::endl;
-                    exit(EXIT_SUCCESS);
-                     }       
+                    if(connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) ==-1){
+                        std::cout << "Erro em conectar socket 111" << std::endl;
+                        exit(EXIT_SUCCESS);
+                     }   
                 }
 
 
@@ -275,7 +275,7 @@ int main(int argc, char *argv[])
 
                 int trem = telaTrens(j1,"Mudar velocidade");
 
-                buffer << "T: " << trem << "\nVL: " << velocidadeTrens(j1,trem);
+                buffer << "T: " << trem << "VL: " << velocidadeTrens(j1,trem);
             break;    
         }
 
@@ -287,6 +287,7 @@ int main(int argc, char *argv[])
                 exit(EXIT_SUCCESS);
             }else{
                 std::cout << "Enviado para o socket: " << buffer.str() << std::endl;
+                usleep(3000000);
             }
         }
 

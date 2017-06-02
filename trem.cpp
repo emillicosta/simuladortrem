@@ -6,7 +6,7 @@ Trem::Trem(int id, int x, int y)
     this->id = id;
     this->x = x;
     this->y = y;
-    tempo_parado = 120;
+    tempo_parado = 60;
     enable = true;
 
     semaforo0 = new Semaforo(1230,1,IPC_CREAT|0600);
@@ -59,6 +59,7 @@ void Trem::start()
 void Trem::run()
 {
     while(true){
+        if(tempo_parado>0){
         switch(id){
         case 1:
             if (enable)
@@ -66,26 +67,35 @@ void Trem::run()
                 emit updateGUI(id,x,y);
                 if (y == 120 && x <120){
                     if(x==100){
-                        if(semaforo1->getContador()>0){
-                            semaforo1->P();
+                        if(semaforo0->getContador()>0){
                             semaforo0->P();
                             x+=10;
                         }
-                    }else{x+=10;}
+                    }else{
+                        x+=10;
+                    }
                 }else{
                     if (x == 120 && y < 300){
-                        if(semaforo1->getContador()>0){
-                            semaforo1->P();
+                        if(semaforo0->getContador()>0 && y <200){
                             semaforo0->P();
                         }
-                        y+=10;
+                        if(semaforo1->getContador()>0 && y >220){
+                            semaforo1->P();
+                        }
+                        if(y==220){
+                            semaforo0->V();
+                            if(semaforo1->getContador()>0){
+                                semaforo1->P();
+                                y+=10;
+                            }
+                        }else{
+                            y+=10;
+                        }
                     }else{
                         if (x > 20 && y == 300){
-                            if(x==100){
+                            if(x==100)
                                 semaforo1->V();
-                                semaforo0->V();
-                            }
-                           x-=10;
+                            x-=10;
                         }else{
                             y-=10;
                         }
@@ -110,7 +120,7 @@ void Trem::run()
                     if(semaforo2->getContador()>0){
                         semaforo2->P();
                     }
-                    if(y==160){
+                    if(y==170){
                         if(semaforo4->getContador()>0){
                             semaforo4->P();
                             y+=10;
@@ -327,7 +337,7 @@ void Trem::run()
                     y+=10;
                 else if (x > 440 && y == 300){
                     if(x==460){
-                        if(semaforo8->getContador()>0){
+                        if(semaforo8->getContador()>0||semaforo9->getContador()>0){
                             semaforo8->P();
                             semaforo9->P();
                             x-=10;
@@ -348,6 +358,7 @@ void Trem::run()
             break;
         }
         this_thread::sleep_for(chrono::milliseconds(tempo_parado));
+        }
     }
 }
 

@@ -55,8 +55,8 @@ MainWindow::MainWindow(QWidget *parent) :
     memset(&endereco, 0, sizeof(endereco));
     endereco.sin_family = AF_INET;
     endereco.sin_port = htons(PORTNUM);
-    //endereco.sin_addr.s_addr = inet_addr("127.0.0.1");
-    endereco.sin_addr.s_addr = inet_addr("192.168.7.1");
+    endereco.sin_addr.s_addr = inet_addr("127.0.0.1");
+    //endereco.sin_addr.s_addr = inet_addr("192.168.7.1");
 
     socketId = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -118,6 +118,13 @@ void MainWindow::run()
             case 7:
                 trem7->setTempoParado(s->getVelocidade());
             default:
+                trem1->setTempoParado(s->getVelocidade());
+                trem2->setTempoParado(s->getVelocidade());
+                trem3->setTempoParado(s->getVelocidade());
+                trem4->setTempoParado(s->getVelocidade());
+                trem5->setTempoParado(s->getVelocidade());
+                trem6->setTempoParado(s->getVelocidade());
+                trem7->setTempoParado(s->getVelocidade());
                 break;
         }
     }

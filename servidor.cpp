@@ -10,6 +10,8 @@
 #include <sys/socket.h> //socket
 #include <unistd.h>     //close
 #include <iostream>
+#include <string>
+#include <sstream>
 using namespace std;
 
 #define MAXMSG 1024
@@ -19,8 +21,8 @@ using namespace std;
 Servidor::Servidor(int idsocket)
 {
     socketId=idsocket;
-    velocidade=120;
-    id=1;
+    velocidade=60;
+    id=4;
 }
 
 Servidor::~Servidor()
@@ -34,6 +36,7 @@ void Servidor::start(){
 
 void Servidor::run(){
     //variáveis do servidor
+    stringstream temp;
 
        //variáveis relacionadas com as conexões clientes
        struct sockaddr_in enderecoCliente;
@@ -62,7 +65,7 @@ void Servidor::run(){
 
            //receber uma msg do cliente
            printf("Servidor vai ficar esperando uma mensagem\n");
-           byteslidos = recv(conexaoClienteId,&dados,sizeof(dados),0);
+           byteslidos = recv(conexaoClienteId,dados,MAXMSG,0);
 
            if (byteslidos == -1)
            {
@@ -74,8 +77,17 @@ void Servidor::run(){
                printf("Cliente finalizou a conexão\n");
                exit(EXIT_SUCCESS);
            }
-
-           cout<<"Servidor recebeu a seguinte msg do cliente:  "<<dados.str()<<"\n";
+           //Inserir o caracter de fim de mensagem
+           dados[byteslidos] = '\0';
+           cout<<"Servidor recebeu a seguinte msg do cliente:  "<<dados<<"\n";
+           for (int i = 8; i < byteslidos; ++i)
+           {
+               temp<<dados[i];
+           }
+           id = dados[3] - '0';
+           cout<<"Servidor recebeu a seguinte msg do cliente:  "<<id<<"\n";
+           velocidade=atoi(temp.str().c_str());
+           temp.str("");
 
 
            close(conexaoClienteId);

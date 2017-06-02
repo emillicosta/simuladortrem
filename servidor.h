@@ -2,10 +2,9 @@
 #define SERVIDOR_H
 
 #include <thread>
-#include <string>
-#include <sstream>
 
 
+#define MAXMSG 1024
 class Servidor
 {
 public:
@@ -22,7 +21,7 @@ private:
     int velocidade;
     int socketId;
     int id;
-    std::stringstream dados;
+    char* dados=new char[MAXMSG+1];;
 
 };
 
