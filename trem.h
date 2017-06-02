@@ -20,6 +20,7 @@ public:
     int getTempoParado();
     int getId();
     void setEnable(bool);
+    void setSemaforo(Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*);
 
 signals:
     void updateGUI(int,int,int);

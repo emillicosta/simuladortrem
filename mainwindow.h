@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "trem.h"
+#include "semaforo.h"
 #include "servidor.h"
 #include <QMainWindow>
 #include <thread>
@@ -35,6 +36,16 @@ private:
     Trem *trem7;
     Servidor *s;
     std::thread threadVel;
+    Semaforo *semaforo0;
+          Semaforo *semaforo1;
+          Semaforo *semaforo2;
+          Semaforo *semaforo3;
+          Semaforo *semaforo4;
+          Semaforo *semaforo5;
+          Semaforo *semaforo6;
+          Semaforo *semaforo7;
+          Semaforo *semaforo8;
+          Semaforo *semaforo9;
 };
 
 #endif // MAINWINDOW_H

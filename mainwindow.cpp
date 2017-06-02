@@ -49,8 +49,27 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(trem7,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
     trem7->start();
 
+    semaforo0 = new Semaforo(1230,1,IPC_CREAT|0600);
+          semaforo1 = new Semaforo(1231,1,IPC_CREAT|0600);
+          semaforo2 = new Semaforo(1232,1,IPC_CREAT|0600);
+          semaforo3 = new Semaforo(1233,1,IPC_CREAT|0600);
+          semaforo4 = new Semaforo(1234,1,IPC_CREAT|0600);
+          semaforo5 = new Semaforo(1235,1,IPC_CREAT|0600);
+          semaforo6 = new Semaforo(1236,1,IPC_CREAT|0600);
+          semaforo7 = new Semaforo(1237,1,IPC_CREAT|0600);
+          semaforo8 = new Semaforo(1238,1,IPC_CREAT|0600);
+          semaforo9 = new Semaforo(1239,1,IPC_CREAT|0600);
 
-    struct sockaddr_in endereco;
+    trem1->setSemaforo(semaforo0,semaforo1,semaforo2,semaforo3,semaforo4,semaforo5,semaforo6,semaforo7,semaforo8,semaforo9);
+    trem2->setSemaforo(semaforo0,semaforo1,semaforo2,semaforo3,semaforo4,semaforo5,semaforo6,semaforo7,semaforo8,semaforo9);
+    trem3->setSemaforo(semaforo0,semaforo1,semaforo2,semaforo3,semaforo4,semaforo5,semaforo6,semaforo7,semaforo8,semaforo9);
+    trem4->setSemaforo(semaforo0,semaforo1,semaforo2,semaforo3,semaforo4,semaforo5,semaforo6,semaforo7,semaforo8,semaforo9);
+    trem5->setSemaforo(semaforo0,semaforo1,semaforo2,semaforo3,semaforo4,semaforo5,semaforo6,semaforo7,semaforo8,semaforo9);
+    trem6->setSemaforo(semaforo0,semaforo1,semaforo2,semaforo3,semaforo4,semaforo5,semaforo6,semaforo7,semaforo8,semaforo9);
+    trem7->setSemaforo(semaforo0,semaforo1,semaforo2,semaforo3,semaforo4,semaforo5,semaforo6,semaforo7,semaforo8,semaforo9);
+
+
+    /*struct sockaddr_in endereco;
     int socketId;
     memset(&endereco, 0, sizeof(endereco));
     endereco.sin_family = AF_INET;
@@ -80,10 +99,10 @@ MainWindow::MainWindow(QWidget *parent) :
         exit(EXIT_FAILURE);
     }
 
-    s = new Servidor(socketId);
-    s->start();
+    //s = new Servidor(socketId);
+    //s->start();
     threadVel=std::thread(&MainWindow::run,this);
-    threadVel.detach();
+    threadVel.detach();*/
 }
 
 MainWindow::~MainWindow()
@@ -157,5 +176,25 @@ void MainWindow::updateInterface(int id, int x, int y)
         default:
             break;
     }
+    if(semaforo0->getContador()) ui->labelSema0->setStyleSheet("background-color:green; ");
+        else ui->labelSema0->setStyleSheet("background-color:red; ");
+    if(semaforo1->getContador()) ui->labelSema1->setStyleSheet("background-color:green; ");
+        else ui->labelSema1->setStyleSheet("background-color:red; ");
+    if(semaforo2->getContador()) ui->labelSema2->setStyleSheet("background-color:green; ");
+        else ui->labelSema2->setStyleSheet("background-color:red; ");
+    if(semaforo3->getContador()) ui->labelSema3->setStyleSheet("background-color:green; ");
+        else ui->labelSema3->setStyleSheet("background-color:red; ");
+    if(semaforo4->getContador()) ui->labelSema4->setStyleSheet("background-color:green; ");
+        else ui->labelSema4->setStyleSheet("background-color:red; ");
+    if(semaforo5->getContador()) ui->labelSema5->setStyleSheet("background-color:green; ");
+        else ui->labelSema5->setStyleSheet("background-color:red; ");
+    if(semaforo6->getContador()) ui->labelSema6->setStyleSheet("background-color:green; ");
+        else ui->labelSema6->setStyleSheet("background-color:red; ");
+    if(semaforo7->getContador()) ui->labelSema7->setStyleSheet("background-color:green; ");
+        else ui->labelSema7->setStyleSheet("background-color:red; ");
+    if(semaforo8->getContador()) ui->labelSema8->setStyleSheet("background-color:green; ");
+        else ui->labelSema8->setStyleSheet("background-color:red; ");
+    if(semaforo9->getContador()) ui->labelSema9->setStyleSheet("background-color:green; ");
+        else ui->labelSema9->setStyleSheet("background-color:red; ");
 }
 

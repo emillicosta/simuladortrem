@@ -250,10 +250,11 @@ text-align: center;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: red</string>
+     <string notr="true">background-color: green
+</string>
     </property>
     <property name="text">
-     <string/>
+     <string>2-5</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelSema3">
@@ -266,7 +267,9 @@ text-align: center;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: red</string>
+     <string notr="true">background-color: green
+
+</string>
     </property>
     <property name="text">
      <string/>
@@ -282,10 +285,10 @@ text-align: center;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: red</string>
+     <string notr="true">background-color: green</string>
     </property>
     <property name="text">
-     <string/>
+     <string>2-4</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelSema0">
@@ -298,10 +301,10 @@ text-align: center;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: red</string>
+     <string notr="true">background-color: green</string>
     </property>
     <property name="text">
-     <string/>
+     <string>1-3</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelSema5">
@@ -314,7 +317,8 @@ text-align: center;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: red</string>
+     <string notr="true">background-color: green
+</string>
     </property>
     <property name="text">
      <string/>
@@ -330,7 +334,8 @@ text-align: center;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: red</string>
+     <string notr="true">background-color: green
+</string>
     </property>
     <property name="text">
      <string/>
@@ -346,7 +351,7 @@ text-align: center;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: red</string>
+     <string notr="true">background-color: green</string>
     </property>
     <property name="text">
      <string/>
@@ -362,7 +367,7 @@ text-align: center;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: red</string>
+     <string notr="true">background-color: green</string>
     </property>
     <property name="text">
      <string/>
@@ -378,7 +383,7 @@ text-align: center;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: red</string>
+     <string notr="true"> background-color: green</string>
     </property>
     <property name="text">
      <string/>
@@ -394,10 +399,10 @@ text-align: center;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: red</string>
+     <string notr="true">background-color: green</string>
     </property>
     <property name="text">
-     <string/>
+     <string>1-2</string>
     </property>
    </widget>
   </widget>
