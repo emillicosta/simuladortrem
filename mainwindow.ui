@@ -321,7 +321,7 @@ text-align: center;</string>
 </string>
     </property>
     <property name="text">
-     <string/>
+     <string>4-5</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelSema6">
@@ -370,7 +370,7 @@ text-align: center;</string>
      <string notr="true">background-color: green</string>
     </property>
     <property name="text">
-     <string/>
+     <string>6-7</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelSema9">
@@ -386,7 +386,7 @@ text-align: center;</string>
      <string notr="true"> background-color: green</string>
     </property>
     <property name="text">
-     <string/>
+     <string>5-7</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelSema1">

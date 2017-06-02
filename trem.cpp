@@ -6,7 +6,7 @@ Trem::Trem(int id, int x, int y)
     this->id = id;
     this->x = x;
     this->y = y;
-    tempo_parado = 20;
+    tempo_parado = 0;
     enable = true;
 
 
@@ -188,13 +188,15 @@ void Trem::run()
         case 4:
             if (enable)
             {
-                emit updateGUI(id,x,y);
+               emit updateGUI(id,x,y);
                if (y == 180 && x <360){
-                   if(x==300)
+                   if(x==300 && semaforo4->getContador()==0)
                        semaforo4->V();
+
                     x+=10;
-               }else if (x == 360 && y < 240){
-                   if(y==200)
+               }
+               else if (x == 360 && y < 240){
+                   if(y==200 && semaforo5->getContador()==0)
                        semaforo5->V();
                    if(y==220){
                        if(semaforo6->getContador()>0||semaforo7->getContador()>0){

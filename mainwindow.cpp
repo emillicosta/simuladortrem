@@ -69,13 +69,13 @@ MainWindow::MainWindow(QWidget *parent) :
     trem7->setSemaforo(semaforo0,semaforo1,semaforo2,semaforo3,semaforo4,semaforo5,semaforo6,semaforo7,semaforo8,semaforo9);
 
 
-    /*struct sockaddr_in endereco;
+    struct sockaddr_in endereco;
     int socketId;
     memset(&endereco, 0, sizeof(endereco));
     endereco.sin_family = AF_INET;
     endereco.sin_port = htons(PORTNUM);
-    endereco.sin_addr.s_addr = inet_addr("127.0.0.1");
-    //endereco.sin_addr.s_addr = inet_addr("192.168.7.1");
+    //endereco.sin_addr.s_addr = inet_addr("127.0.0.1");
+    endereco.sin_addr.s_addr = inet_addr("192.168.7.1");
 
     socketId = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -99,10 +99,10 @@ MainWindow::MainWindow(QWidget *parent) :
         exit(EXIT_FAILURE);
     }
 
-    //s = new Servidor(socketId);
-    //s->start();
+    s = new Servidor(socketId);
+    s->start();
     threadVel=std::thread(&MainWindow::run,this);
-    threadVel.detach();*/
+    threadVel.detach();
 }
 
 MainWindow::~MainWindow()
@@ -136,6 +136,7 @@ void MainWindow::run()
                 break;
             case 7:
                 trem7->setTempoParado(s->getVelocidade());
+                break;
             default:
                 trem1->setTempoParado(s->getVelocidade());
                 trem2->setTempoParado(s->getVelocidade());
@@ -184,7 +185,7 @@ void MainWindow::updateInterface(int id, int x, int y)
         else ui->labelSema2->setStyleSheet("background-color:red; ");
     if(semaforo3->getContador()) ui->labelSema3->setStyleSheet("background-color:green; ");
         else ui->labelSema3->setStyleSheet("background-color:red; ");
-    if(semaforo4->getContador()) ui->labelSema4->setStyleSheet("background-color:green; ");
+    if(semaforo4->getContador()>0) ui->labelSema4->setStyleSheet("background-color:green; ");
         else ui->labelSema4->setStyleSheet("background-color:red; ");
     if(semaforo5->getContador()) ui->labelSema5->setStyleSheet("background-color:green; ");
         else ui->labelSema5->setStyleSheet("background-color:red; ");

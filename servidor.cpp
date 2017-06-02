@@ -22,7 +22,7 @@ Servidor::Servidor(int idsocket)
 {
     socketId=idsocket;
     velocidade=60;
-    id=4;
+    id=7;
 }
 
 Servidor::~Servidor()
