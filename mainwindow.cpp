@@ -200,5 +200,17 @@ void MainWindow::updateInterface(int id, int x, int y)
 
     ui->tempo1->setText(QString("%1").arg(trem1->getTempo()));
     ui->media1->setText(QString("%1").arg(trem1->getMedia()));
+    ui->tempo2->setText(QString("%1").arg(trem2->getTempo()));
+    ui->media2->setText(QString("%1").arg(trem2->getMedia()));
+    ui->tempo3->setText(QString("%1").arg(trem3->getTempo()));
+    ui->media3->setText(QString("%1").arg(trem3->getMedia()));
+    ui->tempo4->setText(QString("%1").arg(trem4->getTempo()));
+    ui->media4->setText(QString("%1").arg(trem4->getMedia()));
+    ui->tempo5->setText(QString("%1").arg(trem5->getTempo()));
+    ui->media5->setText(QString("%1").arg(trem5->getMedia()));
+    ui->tempo6->setText(QString("%1").arg(trem6->getTempo()));
+    ui->media6->setText(QString("%1").arg(trem6->getMedia()));
+    ui->tempo7->setText(QString("%1").arg(trem7->getTempo()));
+    ui->media7->setText(QString("%1").arg(trem7->getMedia()));
 }
 
