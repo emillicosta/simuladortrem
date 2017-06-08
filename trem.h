@@ -38,7 +38,7 @@ private:
    int qtdvoltas=-1;
    float tempo;
    float tempo_total=0;
-   float ultimo_tempo;
+   float ultimo_tempo=0;
 
    Semaforo *semaforo0;
          Semaforo *semaforo1;
