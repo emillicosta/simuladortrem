@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    trem1 = new Trem(1,80,120);
+    trem1 = new Trem(1,30,120);
     connect(trem1,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
     trem1->start();
 
@@ -74,8 +74,8 @@ MainWindow::MainWindow(QWidget *parent) :
     memset(&endereco, 0, sizeof(endereco));
     endereco.sin_family = AF_INET;
     endereco.sin_port = htons(PORTNUM);
-    //endereco.sin_addr.s_addr = inet_addr("127.0.0.1");
-    endereco.sin_addr.s_addr = inet_addr("192.168.7.1");
+    endereco.sin_addr.s_addr = inet_addr("127.0.0.1");
+    //endereco.sin_addr.s_addr = inet_addr("192.168.7.1");
 
     socketId = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -197,5 +197,8 @@ void MainWindow::updateInterface(int id, int x, int y)
         else ui->labelSema8->setStyleSheet("background-color:red; ");
     if(semaforo9->getContador()) ui->labelSema9->setStyleSheet("background-color:green; ");
         else ui->labelSema9->setStyleSheet("background-color:red; ");
+
+    ui->tempo1->setText(QString("%1").arg(trem1->getTempo()));
+    ui->media1->setText(QString("%1").arg(trem1->getMedia()));
 }
 

@@ -27,3 +27,4 @@ FORMS    += mainwindow.ui
 
 CONFIG  += c++11
 LIBS += -pthread
+QT += core

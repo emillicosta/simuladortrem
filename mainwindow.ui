@@ -272,7 +272,7 @@ text-align: center;</string>
 </string>
     </property>
     <property name="text">
-     <string/>
+     <string>3-6</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelSema4">
@@ -338,7 +338,7 @@ text-align: center;</string>
 </string>
     </property>
     <property name="text">
-     <string/>
+     <string>3-4</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelSema7">
@@ -354,7 +354,7 @@ text-align: center;</string>
      <string notr="true">background-color: green</string>
     </property>
     <property name="text">
-     <string/>
+     <string>4-6</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelSema8">
@@ -403,6 +403,32 @@ text-align: center;</string>
     </property>
     <property name="text">
      <string>1-2</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="tempo1">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>320</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="media1">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>350</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>

@@ -19,6 +19,8 @@ public:
     void setId(int);
     int getTempoParado();
     int getId();
+    float getTempo();
+    float getMedia();
     void setEnable(bool);
     void setSemaforo(Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*);
 
@@ -32,9 +34,11 @@ private:
    int y;
    int tempo_parado;
    bool enable;
-   int media=0;
+   float media=0;
    int qtdvoltas=-1;
-   int tempo=0;
+   float tempo;
+   float tempo_total=0;
+   float ultimo_tempo;
 
    Semaforo *semaforo0;
          Semaforo *semaforo1;

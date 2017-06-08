@@ -6,6 +6,7 @@
 #include "servidor.h"
 #include <QMainWindow>
 #include <thread>
+#include <QString>
 
 using namespace std;
 

@@ -21,8 +21,8 @@ using namespace std;
 Servidor::Servidor(int idsocket)
 {
     socketId=idsocket;
-    velocidade=60;
-    id=7;
+    velocidade=99;
+    id=1;
 }
 
 Servidor::~Servidor()

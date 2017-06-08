@@ -8,7 +8,7 @@ Trem::Trem(int id, int x, int y)
     this->y = y;
     tempo_parado = 0;
     enable = true;
-
+    tempo =0;
 
 }
 
@@ -35,6 +35,15 @@ int Trem::getTempoParado()
 int Trem::getId()
 {
     return this->id;
+}
+float Trem::getTempo()
+{
+    return this->ultimo_tempo;
+}
+
+float Trem::getMedia()
+{
+    return this->media;
 }
 
 void Trem::setSemaforo(Semaforo *s0, Semaforo *s1, Semaforo *s2, Semaforo *s3, Semaforo *s4, Semaforo *s5, Semaforo *s6, Semaforo *s7, Semaforo *s8, Semaforo *s9)
@@ -64,7 +73,20 @@ void Trem::run()
         case 1:
             if (enable)
             {
-                emit updateGUI(id,x,y);
+
+               emit updateGUI(id,x,y);
+               if (y == 120 && x ==30){
+                    ultimo_tempo=tempo;
+                    qtdvoltas++;
+                    tempo_total = tempo_total+tempo;
+                    if(qtdvoltas==0)
+                        media=tempo_total;
+                    else
+                        media=tempo_total/qtdvoltas;
+                    tempo=0;
+
+               }
+               tempo = tempo + float(tempo_parado*0.001);
                if (y == 120 && x <120){
                    if(x==100){
                        if(semaforo1->getContador()>0){
@@ -98,6 +120,18 @@ void Trem::run()
             if (enable)
             {
                 emit updateGUI(id,x,y);
+                if (y == 120 && x ==130){
+                     ultimo_tempo=tempo;
+                     qtdvoltas++;
+                     tempo_total = tempo_total+tempo;
+                     if(qtdvoltas==0)
+                         media=tempo_total;
+                     else
+                         media=tempo_total/qtdvoltas;
+                     tempo=0;
+
+                }
+                tempo = tempo + float(tempo_parado*0.001);
                if (y == 120 && x <280){
                    if(x==140)
                        semaforo0->V();
@@ -141,6 +175,18 @@ void Trem::run()
             if (enable)
             {
                 emit updateGUI(id,x,y);
+                if (y == 240 && x ==130){
+                     ultimo_tempo=tempo;
+                     qtdvoltas++;
+                     tempo_total = tempo_total+tempo;
+                     if(qtdvoltas==0)
+                         media=tempo_total;
+                     else
+                         media=tempo_total/qtdvoltas;
+                     tempo=0;
+
+                }
+                tempo = tempo + float(tempo_parado*0.001);
                if (y == 240 && x <280){
                    if(x==140)
                        semaforo1->V();
@@ -189,9 +235,22 @@ void Trem::run()
             if (enable)
             {
                emit updateGUI(id,x,y);
+                if (y == 190 && x ==200){
+                     ultimo_tempo=tempo;
+                     qtdvoltas++;
+                     tempo_total = tempo_total+tempo;
+                     if(qtdvoltas==0)
+                         media=tempo_total;
+                     else
+                         media=tempo_total/qtdvoltas;
+                     tempo=0;
+
+                }
+                tempo = tempo + float(tempo_parado*0.001);
                if (y == 180 && x <360){
                    if(x==300 && semaforo4->getContador()==0)
                        semaforo4->V();
+
 
                     x+=10;
                }
@@ -211,10 +270,12 @@ void Trem::run()
                        semaforo7->V();
                     x-=10;
                }else{
-                   if(y==200){
+                   if(y==200||y==190){
                        if(semaforo4->getContador()>0||semaforo5->getContador()>0){
-                           semaforo4->P();
+                           if(semaforo5->getContador()>0)
                            semaforo5->P();
+                           if(semaforo4->getContador()>0)
+                           semaforo4->P();
                            y-=10;
                        }
                    }else{
@@ -229,6 +290,18 @@ void Trem::run()
             if (enable)
             {
                 emit updateGUI(id,x,y);
+                if (y == 120 && x ==290){
+                     ultimo_tempo=tempo;
+                     qtdvoltas++;
+                     tempo_total = tempo_total+tempo;
+                     if(qtdvoltas==0)
+                         media=tempo_total;
+                     else
+                         media=tempo_total/qtdvoltas;
+                     tempo=0;
+
+                }
+                tempo = tempo + float(tempo_parado*0.001);
                if (y == 120 && x <440){
                    if(x==420) {
                        if(semaforo8->getContador()>0){
@@ -276,6 +349,18 @@ void Trem::run()
             if (enable)
             {
                 emit updateGUI(id,x,y);
+                if (y == 240 && x ==370){
+                     ultimo_tempo=tempo;
+                     qtdvoltas++;
+                     tempo_total = tempo_total+tempo;
+                     if(qtdvoltas==0)
+                         media=tempo_total;
+                     else
+                         media=tempo_total/qtdvoltas;
+                     tempo=0;
+
+                }
+                tempo = tempo + float(tempo_parado*0.001);
                if (y == 240 && x <440){
                    if(x==420) {
                        if(semaforo9->getContador()>0){
@@ -321,6 +406,18 @@ void Trem::run()
             if (enable)
             {
                 emit updateGUI(id,x,y);
+                if (y == 120 && x ==450){
+                     ultimo_tempo=tempo;
+                     qtdvoltas++;
+                     tempo_total = tempo_total+tempo;
+                     if(qtdvoltas==0)
+                         media=tempo_total;
+                     else
+                         media=tempo_total/qtdvoltas;
+                     tempo=0;
+
+                }
+                tempo = tempo + float(tempo_parado*0.001);
                if (y == 120 && x <540){
                    if(x==460)
                        semaforo8->V();
