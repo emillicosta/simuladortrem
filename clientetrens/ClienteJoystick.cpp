@@ -135,8 +135,8 @@ int velocidadeTrens(Joystick& j1, int trem){
         usleep(150000);
 
     }
-	
-	usleep(300000);
+    
+    usleep(300000);
 
     return velocidade;
 }
@@ -164,8 +164,8 @@ int telaTrens(Joystick& j1,string acao){
         }
 
     }
-	
-	usleep(300000);
+    
+    usleep(300000);
 
     return valorAtual;
 }
@@ -193,8 +193,8 @@ int telaPrincipal(Joystick& j1){
         }
 
     }
-	
-	usleep(300000);
+    
+    usleep(300000);
 
     return valorAtual;
 }
@@ -207,58 +207,55 @@ int main(int argc, char *argv[])
     bool sair=false;
     bool conectado=false;
     bool trensParados=true;
-	//bool primeiraConexao = true;
     std::stringstream buffer;
-	const char *dados ="oi";
-	
-	int valorEscolhido=1;
+    const char *dados ="oi";
+    
+    int valorEscolhido=1;
 
     while(!sair){
-	
-	//Criando socket
+    
+    //Criando socket
 
-    	//==========================================================
+        //==========================================================
 
-    	int     sockfd;
-    	struct sockaddr_in servaddr;
+        int     sockfd;
+        struct sockaddr_in servaddr;
 
-    	memset(&servaddr, 0x00, sizeof(servaddr));
-    	servaddr.sin_family = AF_INET;
-    	servaddr.sin_port = htons(PORTNUM);
-    	inet_pton(AF_INET, "192.168.7.1", &servaddr.sin_addr);
+        memset(&servaddr, 0x00, sizeof(servaddr));
+        servaddr.sin_family = AF_INET;
+        servaddr.sin_port = htons(PORTNUM);
+        inet_pton(AF_INET, "192.168.7.1", &servaddr.sin_addr);
 
-    	sockfd = socket(AF_INET, SOCK_STREAM, 0);
+        sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
-    	if (sockfd == -1){
+        if (sockfd == -1){
             std::cout << "Falha ao criar o socket" << std::endl;
-       	    exit(EXIT_FAILURE);
-    	}
+            exit(EXIT_FAILURE);
+        }
 
-    	//==========================================================
-	
-		if(conectado==true){
-	    	if(connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) ==-1){
-        	    std::cout << "Erro em conectar socket 111" << std::endl;
-        	    exit(EXIT_SUCCESS);
-        	} 	
-		}
+        //==========================================================
+    
+        if(conectado==true){
+            if(connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) ==-1){
+                std::cout << "Erro em conectar socket 111" << std::endl;
+                exit(EXIT_SUCCESS);
+            }   
+        }
 
 
         valorEscolhido = telaPrincipal(j1);
-				
+                
         switch(valorEscolhido){
             case 1:
-				
+                
                 if(conectado==false){
                 
                     if(connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) ==-1){
                         std::cout << "Erro em conectar socket 2" << std::endl;
                         exit(EXIT_SUCCESS);
                     }
-					
-					//primeiraConexao=false;
-					conectado=true;
-					continue;
+            
+                    conectado=true;
                 }else{
                     conectado=false;
                     sair=true;
@@ -286,23 +283,21 @@ int main(int argc, char *argv[])
         }
 
         //Se conectado manda as informações para o buffer
-        if(conectado==true /* && primeiraConexao==true*/){
+        if(conectado==true){
             //Escrevendo no canal de comunicação do socket
-			dados = buffer.str().c_str();
+            dados = buffer.str().c_str();
             if (send(sockfd, dados,strlen(dados),0)<0){
                 std::cout << "Erro em enviar informação para o servidor" << std::endl;
                 exit(EXIT_SUCCESS);
             }else{
                 std::cout << "Enviado para o socket: " << dados << std::endl;
-				buffer.str("");
-				usleep(3000000);
+                buffer.str("");
+                usleep(3000000);
             }
-			
-			//primeiraConexao=false;
         }
-		
-		//Fechando socket
-		close(sockfd);
+        
+        //Fechando socket
+        close(sockfd);
 
     }
 

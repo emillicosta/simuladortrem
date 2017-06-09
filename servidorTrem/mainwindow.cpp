@@ -74,8 +74,8 @@ MainWindow::MainWindow(QWidget *parent) :
     memset(&endereco, 0, sizeof(endereco));
     endereco.sin_family = AF_INET;
     endereco.sin_port = htons(PORTNUM);
-    endereco.sin_addr.s_addr = inet_addr("127.0.0.1");
-    //endereco.sin_addr.s_addr = inet_addr("192.168.7.1");
+   // endereco.sin_addr.s_addr = inet_addr("127.0.0.1");
+    endereco.sin_addr.s_addr = inet_addr("192.168.7.1");
 
     socketId = socket(AF_INET, SOCK_STREAM, 0);
 
