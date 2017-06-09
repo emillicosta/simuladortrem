@@ -21,31 +21,31 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    trem1 = new Trem(1,30,120);
+    trem1 = new Trem(1,70,120);
     connect(trem1,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
     trem1->start();
 
-    trem2 = new Trem(2,120,120);
+    trem2 = new Trem(2,180,120);
     connect(trem2,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
     trem2->start();
 
-    trem3 = new Trem(3,120,240);
+    trem3 = new Trem(3,180,300);
     connect(trem3,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
     trem3->start();
 
-    trem4 = new Trem(4,200,190);
+    trem4 = new Trem(4,200,210);
     connect(trem4,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
     trem4->start();
 
-    trem5 = new Trem(5,290,120);
+    trem5 = new Trem(5,360,120);
     connect(trem5,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
     trem5->start();
 
-    trem6 = new Trem(6,370,240);
+    trem6 = new Trem(6,370,300);
     connect(trem6,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
     trem6->start();
 
-    trem7 = new Trem(7,450,120);
+    trem7 = new Trem(7,490,120);
     connect(trem7,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
     trem7->start();
 
@@ -74,8 +74,8 @@ MainWindow::MainWindow(QWidget *parent) :
     memset(&endereco, 0, sizeof(endereco));
     endereco.sin_family = AF_INET;
     endereco.sin_port = htons(PORTNUM);
-    //endereco.sin_addr.s_addr = inet_addr("127.0.0.1");
-    endereco.sin_addr.s_addr = inet_addr("192.168.7.1");
+    endereco.sin_addr.s_addr = inet_addr("127.0.0.1");
+    //endereco.sin_addr.s_addr = inet_addr("192.168.7.1");
 
     socketId = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -200,17 +200,31 @@ void MainWindow::updateInterface(int id, int x, int y)
 
     ui->tempo1->setText(QString("%1").arg(trem1->getTempo()));
     ui->media1->setText(QString("%1").arg(trem1->getMedia()));
+    ui->desvio1->setText(QString("%1").arg(trem1->getDesvio()));
+
     ui->tempo2->setText(QString("%1").arg(trem2->getTempo()));
     ui->media2->setText(QString("%1").arg(trem2->getMedia()));
+    ui->desvio2->setText(QString("%1").arg(trem2->getDesvio()));
+
     ui->tempo3->setText(QString("%1").arg(trem3->getTempo()));
     ui->media3->setText(QString("%1").arg(trem3->getMedia()));
+    ui->desvio3->setText(QString("%1").arg(trem3->getDesvio()));
+
     ui->tempo4->setText(QString("%1").arg(trem4->getTempo()));
     ui->media4->setText(QString("%1").arg(trem4->getMedia()));
+    ui->desvio4->setText(QString("%1").arg(trem4->getDesvio()));
+
     ui->tempo5->setText(QString("%1").arg(trem5->getTempo()));
     ui->media5->setText(QString("%1").arg(trem5->getMedia()));
+    ui->desvio5->setText(QString("%1").arg(trem5->getDesvio()));
+
     ui->tempo6->setText(QString("%1").arg(trem6->getTempo()));
     ui->media6->setText(QString("%1").arg(trem6->getMedia()));
+    ui->desvio6->setText(QString("%1").arg(trem6->getDesvio()));
+
     ui->tempo7->setText(QString("%1").arg(trem7->getTempo()));
     ui->media7->setText(QString("%1").arg(trem7->getMedia()));
+    ui->desvio7->setText(QString("%1").arg(trem7->getDesvio()));
+
 }
 

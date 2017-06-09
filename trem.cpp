@@ -46,6 +46,11 @@ float Trem::getMedia()
     return this->media;
 }
 
+float Trem::getDesvio()
+{
+    return this->desvio;
+}
+
 void Trem::setSemaforo(Semaforo *s0, Semaforo *s1, Semaforo *s2, Semaforo *s3, Semaforo *s4, Semaforo *s5, Semaforo *s6, Semaforo *s7, Semaforo *s8, Semaforo *s9)
 {
     semaforo0=s0;
@@ -65,6 +70,32 @@ void Trem::start()
     threadTrem = std::thread(&Trem::run,this);
 }
 
+void Trem::estatisticas()
+{
+    float soma=0;
+    float variancia=0;
+    int indice;
+
+    ultimo_tempo=tempo;
+    qtdvoltas++;
+    indice=qtdvoltas%20;
+    tempo_total = tempo_total+tempo;
+    A[indice]=tempo;
+    if(qtdvoltas==0){
+        media=tempo_total;
+    }else{
+        media=tempo_total/qtdvoltas;
+        for(int i = 1; i <= indice; i++){
+            soma=soma+((A[i]-media)*(A[i]-media));
+            //desvio=A[1];
+        }
+        variancia=soma/(indice);
+        desvio=sqrt(variancia);
+    }
+
+    tempo=0;
+}
+
 void Trem::run()
 {
     while(true){
@@ -75,16 +106,8 @@ void Trem::run()
             {
 
                emit updateGUI(id,x,y);
-               if (y == 120 && x ==30){
-                    ultimo_tempo=tempo;
-                    qtdvoltas++;
-                    tempo_total = tempo_total+tempo;
-                    if(qtdvoltas==0)
-                        media=tempo_total;
-                    else
-                        media=tempo_total/qtdvoltas;
-                    tempo=0;
-
+               if (y == 120 && x ==70){
+                    estatisticas();
                }
                tempo = tempo + float(tempo_parado*0.001);
 
@@ -138,16 +161,8 @@ void Trem::run()
             if (enable)
             {
                 emit updateGUI(id,x,y);
-                if (y == 120 && x ==130){
-                     ultimo_tempo=tempo;
-                     qtdvoltas++;
-                     tempo_total = tempo_total+tempo;
-                     if(qtdvoltas==0)
-                         media=tempo_total;
-                     else
-                         media=tempo_total/qtdvoltas;
-                     tempo=0;
-
+                if (y == 120 && x ==180){
+                      estatisticas();
                 }
                 tempo = tempo + float(tempo_parado*0.001);
 
@@ -202,15 +217,8 @@ void Trem::run()
             if (enable)
             {
                 emit updateGUI(id,x,y);
-                if (y == 240 && x ==130){
-                     ultimo_tempo=tempo;
-                     qtdvoltas++;
-                     tempo_total = tempo_total+tempo;
-                     if(qtdvoltas==0)
-                         media=tempo_total;
-                     else
-                         media=tempo_total/qtdvoltas;
-                     tempo=0;
+                if (y == 300 && x ==180){
+                     estatisticas();
 
                 }
                 tempo = tempo + float(tempo_parado*0.001);
@@ -271,15 +279,8 @@ void Trem::run()
             if (enable)
             {
                emit updateGUI(id,x,y);
-                if (y == 190 && x ==200){
-                     ultimo_tempo=tempo;
-                     qtdvoltas++;
-                     tempo_total = tempo_total+tempo;
-                     if(qtdvoltas==0)
-                         media=tempo_total;
-                     else
-                         media=tempo_total/qtdvoltas;
-                     tempo=0;
+                if (y == 210 && x ==200){
+                      estatisticas();
 
                 }
                 tempo = tempo + float(tempo_parado*0.001);
@@ -348,16 +349,8 @@ void Trem::run()
             if (enable)
             {
                 emit updateGUI(id,x,y);
-                if (y == 120 && x ==290){
-                     ultimo_tempo=tempo;
-                     qtdvoltas++;
-                     tempo_total = tempo_total+tempo;
-                     if(qtdvoltas==0)
-                         media=tempo_total;
-                     else
-                         media=tempo_total/qtdvoltas;
-                     tempo=0;
-
+                if (y == 120 && x ==360){
+                      estatisticas();
                 }
                 tempo = tempo + float(tempo_parado*0.001);
 
@@ -412,15 +405,8 @@ void Trem::run()
             if (enable)
             {
                 emit updateGUI(id,x,y);
-                if (y == 240 && x ==370){
-                     ultimo_tempo=tempo;
-                     qtdvoltas++;
-                     tempo_total = tempo_total+tempo;
-                     if(qtdvoltas==0)
-                         media=tempo_total;
-                     else
-                         media=tempo_total/qtdvoltas;
-                     tempo=0;
+                if (y == 300 && x ==370){
+                      estatisticas();
 
                 }
                 tempo = tempo + float(tempo_parado*0.001);
@@ -477,15 +463,8 @@ void Trem::run()
             if (enable)
             {
                 emit updateGUI(id,x,y);
-                if (y == 120 && x ==450){
-                     ultimo_tempo=tempo;
-                     qtdvoltas++;
-                     tempo_total = tempo_total+tempo;
-                     if(qtdvoltas==0)
-                         media=tempo_total;
-                     else
-                         media=tempo_total/qtdvoltas;
-                     tempo=0;
+                if (y == 120 && x ==490){
+                      estatisticas();
 
                 }
                 tempo = tempo + float(tempo_parado*0.001);

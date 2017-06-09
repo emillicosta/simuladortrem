@@ -15,12 +15,14 @@ public:
     ~Trem();
     void start();
     void run();
+    void estatisticas();
     void setTempoParado(int);
     void setId(int);
     int getTempoParado();
     int getId();
     float getTempo();
     float getMedia();
+    float getDesvio();
     void setEnable(bool);
     void setSemaforo(Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*,Semaforo*);
 
@@ -39,6 +41,8 @@ private:
    float tempo;
    float tempo_total=0;
    float ultimo_tempo=0;
+   float desvio=0;
+   float A[20];
 
    Semaforo *semaforo0;
          Semaforo *semaforo1;
